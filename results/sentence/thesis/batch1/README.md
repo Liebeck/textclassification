@@ -1,1 +1,0 @@
-All results containing character embeddings in batch1 are based on an incomplete lookup
