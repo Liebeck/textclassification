@@ -1,0 +1,13 @@
+{
+  "padding_length": 20,
+  "epochs": 20,
+  "keras_model_parameters": {
+    "padding_length": 20,
+    "lstm_size": 128,
+    "dropout": 0.4
+  },
+  "batch_size": 32,
+  "evaluation_ID": 125,
+  "embeddings_cache_name": "word2vec_wiki_de_20170501_300-reduced-both",
+  "keras_model_name": "lstm-embedding-pretrained"
+}
