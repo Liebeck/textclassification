@@ -1,8 +1,8 @@
-from frameworks import tc_scikit as bag_of_words
+from collections import OrderedDict
+import frameworks.tc_scikit.features.bag_of_words as bag_of_words
 import frameworks.tc_scikit.features.character_ngrams as character_ngrams
 import frameworks.tc_scikit.features.dependency_distribution_spacy as dependency_distribution_spacy
 import frameworks.tc_scikit.features.sentiws_polarity_distribution as sentiws_polarity_distribution
-from collections import OrderedDict
 import frameworks.tc_scikit.features.embedding_centroid as embedding_centroid
 import frameworks.tc_scikit.features.lda_distribution as lda_distribution
 import frameworks.tc_scikit.features.pos_distribution_spacy as pos_distribution_spacy
