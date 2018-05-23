@@ -1,5 +1,5 @@
 # textclassification
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/Liebeck/textclassification/blob/master/LICENSE.md)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/Liebeck/textclassification/blob/master/LICENSE.md)  
 This is a partially refactored version of the [ArgMining Repository](https://github.com/Liebeck/ArgMining) and the code for the argument mining tasks that were researched by Matthias Liebeck as part of his PhD thesis.
 
 ## Requirements
