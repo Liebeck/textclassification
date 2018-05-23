@@ -37,17 +37,9 @@ if __name__ == '__main__':
     with open(arguments.configfile) as data_file:
         settings = json.load(data_file)
     # 2) Read datasets
-    if 'data_version' in settings:  # backwards compability for old setting files
-        if settings['data_version'] == 'v1':
-            train_path = 'data/THF/sentence/subtask{}_train.json'.format(settings['subtask'])
-            test_path = 'data/THF/sentence/subtask{}_test.json'.format(settings['subtask'])
-        else:
-            train_path = 'data/THF/sentence/subtask{}_{}_train.json'.format(settings['subtask'],
-                                                                            settings['data_version'])
-            test_path = 'data/THF/sentence/subtask{}_{}_test.json'.format(settings['subtask'], settings['data_version'])
-    else:
-        train_path = 'data/THF/sentence/subtask{}_train.json'.format(settings['subtask'])
-        test_path = 'data/THF/sentence/subtask{}_test.json'.format(settings['subtask'])
+    train_path = 'data/THF/sentence/subtask{}_{}_train.json'.format(settings['subtask'],
+                                                                    settings['data_version'])
+    test_path = 'data/THF/sentence/subtask{}_{}_test.json'.format(settings['subtask'], settings['data_version'])
     if arguments.hilbert:  # work around for absolute paths on the hilbert cluster
         train_path = '/scratch_gs/malie102/jobs/ArgMining/' + train_path
         test_path = '/scratch_gs/malie102/jobs/ArgMining/' + test_path

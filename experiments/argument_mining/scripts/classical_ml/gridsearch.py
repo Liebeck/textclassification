@@ -51,10 +51,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     arguments = config_argparser()
     # 1) Load data sets
-    if arguments.data_version == 'v1':
-        train_path = 'data/THF/sentence/subtask{}_train.json'.format(arguments.subtask)
-    else:
-        train_path = 'data/THF/sentence/subtask{}_{}_train.json'.format(arguments.subtask, arguments.data_version)
+    train_path = 'data/THF/sentence/subtask{}_{}_train.json'.format(arguments.subtask, arguments.data_version)
     if arguments.hilbert:  # work around for absolute paths on the hilbert cluster
         train_path = '/scratch_gs/malie102/jobs/ArgMining/' + train_path
     group_claims = True
