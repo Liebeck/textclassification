@@ -21,21 +21,21 @@ def build(feature_name='bag_of_words', ngram_range=(1, 1), token_form='text', lo
     return (feature_name, pipeline)
 
 
-def tokenizer_THF_words(thf_sentence):
-    return list(map(lambda token: token.text, thf_sentence.tokens))
+def tokenizer_words(document):
+    return list(map(lambda token: token.text, document.tokens))
 
 
-def tokenizer_THF_words_lowercase(thf_sentence):
-    return list(map(lambda token: token.text.lower(), thf_sentence.tokens))
+def tokenizer_words_lowercase(document):
+    return list(map(lambda token: token.text.lower(), document.tokens))
 
 
-def tokenizer_shape(thf_sentence):
-    return list(map(lambda token: token.spacy_shape, thf_sentence.tokens))
+def tokenizer_shape(document):
+    return list(map(lambda token: token.spacy_shape, document.tokens))
 
 
-def tokenizer_shape_lemma(thf_sentence):
+def tokenizer_shape_lemma(document):
     words = []
-    for token in thf_sentence.tokens:
+    for token in document.tokens:
         if token.iwnlp_lemma is not None and len(token.iwnlp_lemma) == 1:
             words.append(word_shape(token.iwnlp_lemma[0]))
         else:
@@ -43,9 +43,9 @@ def tokenizer_shape_lemma(thf_sentence):
     return words
 
 
-def tokenizer_THF_lemma(thf_sentence):
+def tokenizer_lemma(sentence):
     words = []
-    for token in thf_sentence.tokens:
+    for token in sentence.tokens:
         if token.iwnlp_lemma is not None and len(token.iwnlp_lemma) == 1:
             words.append(token.iwnlp_lemma[0])
         else:
@@ -53,9 +53,9 @@ def tokenizer_THF_lemma(thf_sentence):
     return words
 
 
-def tokenizer_THF_lemma_lowercase(thf_sentence):
+def tokenizer_lemma_lowercase(sentence):
     words = []
-    for token in thf_sentence.tokens:
+    for token in sentence.tokens:
         if token.iwnlp_lemma is not None and len(token.iwnlp_lemma) == 1:
             words.append(token.iwnlp_lemma[0].lower())
         else:
@@ -76,13 +76,13 @@ class BagOfWords(BaseEstimator):
 
     def get_tokenizer(self):
         if self.token_form == 'text' and not self.lowercase:
-            return tokenizer_THF_words
+            return tokenizer_words
         elif self.token_form == 'text' and self.lowercase:
-            return tokenizer_THF_words_lowercase
+            return tokenizer_words_lowercase
         elif self.token_form == 'IWNLP_lemma' and not self.lowercase:
-            return tokenizer_THF_lemma
+            return tokenizer_lemma
         elif self.token_form == 'IWNLP_lemma' and self.lowercase:
-            return tokenizer_THF_lemma_lowercase
+            return tokenizer_lemma_lowercase
         elif self.token_form == 'shape':
             return tokenizer_shape
         elif self.token_form == 'shape_lemma':
