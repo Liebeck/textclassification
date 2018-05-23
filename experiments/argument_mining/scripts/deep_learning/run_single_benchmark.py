@@ -3,7 +3,7 @@ import json
 import logging
 import sys
 
-from frameworks.tc_keras import benchmark
+from experiments.argument_mining.scripts.deep_learning import benchmark
 
 
 def config_logger(log_level=logging.INFO):

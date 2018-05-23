@@ -1,5 +1,5 @@
-from frameworks.tc_keras import cnn
-from frameworks.tc_keras import lstm
+from frameworks.tc_keras.keras_models import cnn
+from frameworks.tc_keras.keras_models import lstm
 
 model_map = {'lstm-embedding-empty': lstm.lstm_embedding_empty,
              'lstm-embedding-pretrained': lstm.lstm_embedding_pretrained,

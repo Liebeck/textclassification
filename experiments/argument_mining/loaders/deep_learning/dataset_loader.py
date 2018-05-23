@@ -2,12 +2,10 @@
 # -*- coding: UTF-8 -*-
 import json
 import logging
-
 import numpy as np
 from keras.preprocessing import sequence
 from keras.utils.np_utils import to_categorical
-
-from frameworks.tc_keras import THFSentenceDeepLearning
+from experiments.argument_mining.models.deep_learning.thf_sentence_deep_learning import THFSentenceDeepLearning
 
 # Map string labels to integers for Keras
 map_class_numeric_A = {'argumentative': 0, 'non-argumentative': 1}

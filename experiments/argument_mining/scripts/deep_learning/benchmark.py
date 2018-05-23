@@ -1,17 +1,15 @@
 import logging
 import pickle
 import time
-
 import numpy as np
 from keras.callbacks import ModelCheckpoint
 from keras.models import load_model
 from pandas_confusion import ConfusionMatrix
 from sklearn.metrics import f1_score
-
-from frameworks.tc_keras import load_dataset
 from frameworks.tc_keras.keras_models import model_selector
 from frameworks.tc_keras import utils
 from frameworks.tc_keras.loaders import vocabulary_builder
+from experiments.argument_mining.loaders.deep_learning.dataset_loader import load_dataset
 
 
 def benchmark(subtask, config_parameters):
@@ -52,11 +50,8 @@ def benchmark(subtask, config_parameters):
     # Step 3) Train the model
     logger.info('Train...')
     current_time = time.strftime('%Y%m%d_%H%M%S')
-    model_save_path = 'results/sentence_deeplearning/temp/{}_{}_{}_{}'.format(subtask,
-                                                                              config_parameters['keras_model_name'],
-                                                                              '{:03}'.format(
-                                                                                  config_parameters['evaluation_ID']),
-                                                                              current_time)
+    model_save_path = 'experiments/argument_mining/results/sentence_deeplearning/temp/{}_{}_{}_{}'.format(subtask, config_parameters[
+        'keras_model_name'], '{:03}'.format(config_parameters['evaluation_ID']), current_time)
     checkpoint_save_path = model_save_path + "_best.hdf5"
     checkpoint = ModelCheckpoint(checkpoint_save_path,
                                  monitor='val_acc', verbose=0,
@@ -93,13 +88,14 @@ def benchmark(subtask, config_parameters):
         logger.info("Confusion matrix:")
         logger.info(ConfusionMatrix(Y_test_indices, y_prediction_classes))
 
-        output_path_base = 'results/sentence_deeplearning/temp/{}_{}_{}_{}_{}'.format(subtask,
-                                                                                      config_parameters[
-                                                                                          'keras_model_name'],
-                                                                                      '{:03}'.format(config_parameters[
-                                                                                                         'evaluation_ID']),
-                                                                                      current_time,
-                                                                                      saved_model['name'])
+        output_path_base = 'experiments/argument_mining/results/sentence_deeplearning/temp/{}_{}_{}_{}_{}'.format(subtask,
+                                                                                                                  config_parameters[
+                                                                                                                      'keras_model_name'],
+                                                                                                                  '{:03}'.format(
+                                                                                                                      config_parameters[
+                                                                                                                          'evaluation_ID']),
+                                                                                                                  current_time,
+                                                                                                                  saved_model['name'])
 
         # Step 7) Print results to the file system
         utils.write_prediction_file(path=output_path_base + '.predictions', test_unique_ids=test_unique_ids,

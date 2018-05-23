@@ -5,7 +5,7 @@ import pickle
 import gensim
 from gensim.models.wrappers.fasttext import FastText as FT_wrapper
 
-from frameworks.tc_keras import vocabulary_builder
+from frameworks.tc_keras.loaders import vocabulary_builder
 
 
 # The usage of an embedding cache is inspired by https://github.com/UKPLab/argument-reasoning-comprehension-task/
