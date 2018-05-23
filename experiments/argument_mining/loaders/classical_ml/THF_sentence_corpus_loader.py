@@ -30,6 +30,10 @@ def load_v3(file_path='data/THF/sentence/subtaskA_train.json', group_claims=True
             tokens = []
             for token in sentence_tokens:
                 token.pop("embedding")
+                token.pop("mate_tools_pos_tag")  # remove legacy token information, replaced by spaCy
+                token.pop("mate_tools_lemma")  # remove legacy token information, replaced by spaCy
+                token.pop("pos_tag")  # remove legacy token information, replaced by spaCy
+                token.pop("tree_tagger_lemma")  # remove legacy token information, replaced by spaCy
                 token_model = Token(**token)
                 tokens.append(token_model)
             dependencies = []
