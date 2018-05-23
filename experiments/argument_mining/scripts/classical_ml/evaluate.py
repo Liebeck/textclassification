@@ -62,19 +62,19 @@ if __name__ == '__main__':
     if settings['embeddings_path']:
         word2vec = Word2Vec(model_path=settings['embeddings_path'])
         word2vec.load()
-        word2vec.annotate_sentences(X_train)
-        word2vec.annotate_sentences(X_test)
+        word2vec.annotate_documents(X_train)
+        word2vec.annotate_documents(X_test)
     if settings['lda_path']:
         lda = LDA(model_path=settings['lda_path'], vocab_path=settings['lda_vocab_path'],
                   nouns_only=settings['lda_all_words'])
         lda.load()
-        lda.annotate_sentences(X_train)
-        lda.annotate_sentences(X_test)
+        lda.annotate_documents(X_train)
+        lda.annotate_documents(X_test)
     if settings['fasttext_path']:
         fasttext = FastText(model_path=settings['fasttext_path'])
         fasttext.load()
-        fasttext.annotate_sentences(X_train)
-        fasttext.annotate_sentences(X_test)
+        fasttext.annotate_documents(X_train)
+        fasttext.annotate_documents(X_test)
     # 4) Shuffle if desired
     X_train, y_train = shuffle_training_Set(X_train, y_train, settings['shuffle'])
     # 5) Reduce training size

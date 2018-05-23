@@ -16,14 +16,14 @@ class Word2Vec:
         self.model = gensim.models.KeyedVectors.load(self.model_path)
         self.logger.info("Model loaded")
 
-    def annotate_sentence(self, sentence):
-        for token in sentence.tokens:
+    def annotate_document(self, document):
+        for token in document.tokens:
             self.total_tokens = self.total_tokens + 1
             key = token.get_key(self.text_type)
             if key in self.model.wv.vocab:
                 self.coverage = self.coverage + 1
                 token.embedding = self.model[key]
 
-    def annotate_sentences(self, sentences):
-        list(map(lambda sentence: self.annotate_sentence(sentence), sentences))
+    def annotate_documents(self, documents):
+        list(map(lambda sentence: self.annotate_document(sentence), documents))
         self.logger.info("Annotated Tokens {}/{}".format(self.coverage, self.total_tokens))
