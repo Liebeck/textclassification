@@ -9,9 +9,9 @@ from pandas_confusion import ConfusionMatrix
 from sklearn.metrics import f1_score
 
 from frameworks.tc_keras import load_dataset
-from frameworks.tc_keras import model_selector
+from frameworks.tc_keras.keras_models import model_selector
 from frameworks.tc_keras import utils
-from frameworks.tc_keras import vocabulary_builder
+from frameworks.tc_keras.loaders import vocabulary_builder
 
 
 def benchmark(subtask, config_parameters):
