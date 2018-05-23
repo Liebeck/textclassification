@@ -2,7 +2,7 @@ from sklearn.utils import shuffle
 import logging
 
 
-def shuffle_training_Set(X_train, y_train, random_state):
+def shuffle_training_set(X_train, y_train, random_state):
     logger = logging.getLogger()
     if random_state is None:
         logger.info("Using the original order of the dataset")

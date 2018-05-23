@@ -10,7 +10,7 @@ from sklearn.metrics import f1_score
 from experiments.argument_mining.loaders.classical_ml.THF_sentence_corpus_loader import load_dataset
 from frameworks.tc_scikit.classifiers.classifier import create_classifier
 from frameworks.tc_scikit.evaluation.reduce_training_set import reduce_training_set
-from frameworks.tc_scikit.evaluation.shuffle import shuffle_training_Set
+from frameworks.tc_scikit.evaluation.shuffle import shuffle_training_set
 from frameworks.tc_scikit.pipelines.pipeline import pipeline
 from frameworks.tc_scikit.representations.fasttext import FastText
 from frameworks.tc_scikit.representations.lda import LDA
@@ -76,7 +76,7 @@ if __name__ == '__main__':
         fasttext.annotate_documents(X_train)
         fasttext.annotate_documents(X_test)
     # 4) Shuffle if desired
-    X_train, y_train = shuffle_training_Set(X_train, y_train, settings['shuffle'])
+    X_train, y_train = shuffle_training_set(X_train, y_train, settings['shuffle'])
     # 5) Reduce training size
     X_train, y_train = reduce_training_set(X_train, y_train, settings['training_size'])
     # 6) Load classifier with arguments

@@ -8,7 +8,7 @@ from experiments.argument_mining.loaders.classical_ml.THF_sentence_corpus_loader
 from frameworks.tc_scikit.classifiers.classifier import get_classifier
 from frameworks.tc_scikit.evaluation.gridsearch_report import report_best_results
 from frameworks.tc_scikit.evaluation.reduce_training_set import reduce_training_set
-from frameworks.tc_scikit.evaluation.shuffle import shuffle_training_Set
+from frameworks.tc_scikit.evaluation.shuffle import shuffle_training_set
 from frameworks.tc_scikit.pipelines.pipeline import pipeline
 from frameworks.tc_scikit.representations.fasttext import FastText
 from frameworks.tc_scikit.representations.lda import LDA
@@ -65,7 +65,7 @@ if __name__ == '__main__':
         fasttext.load()
         fasttext.annotate_documents(X_train)
     # 2) Shuffle if desired
-    X_train, y_train = shuffle_training_Set(X_train, y_train, arguments.shuffle)
+    X_train, y_train = shuffle_training_set(X_train, y_train, arguments.shuffle)
     # 4) Reduce training size
     X_train, y_train = reduce_training_set(X_train, y_train, arguments.trainingsize)
     # 5) Select feature combination
