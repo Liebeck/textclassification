@@ -5,6 +5,7 @@ from spacy_sentiws import spaCySentiWS
 from frameworks.tc_scikit.models.token import Token
 from frameworks.tc_scikit.models.dependency import Dependency
 
+
 class SpacyWrapper(object):
     def __init__(self):
         self.logger = logging.getLogger()
