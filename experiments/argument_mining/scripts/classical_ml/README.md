@@ -38,7 +38,6 @@ Performs a cross-validation on the training set with a feature combination and e
 ### evaluate.py
 Given a path to a settings file, the evaluate script trains the specified classiers on the training set and predicts on the test set.
 ``` bash
-    python experiments/argument_mining/scripts/classical_ml/evaluate.py -configfile results/sentence/temp/XXX
-
+    python3 experiments/argument_mining/scripts/classical_ml/evaluate.py -configfile experiments/argument_mining/results/sentence/temp/XXX
 ```
 
