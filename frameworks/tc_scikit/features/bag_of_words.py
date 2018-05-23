@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.base import BaseEstimator
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import Pipeline
-from spacy.orth import word_shape
+from spacy.lang.lex_attrs import word_shape
 
 from frameworks.tc_scikit.transformers.normalizer_toggle import NormalizerToggle
 
