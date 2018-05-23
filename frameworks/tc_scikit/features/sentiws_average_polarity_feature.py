@@ -14,8 +14,8 @@ def build():
 def extract_average_polarity(document):
     polarity_scores = []
     for token in document.tokens:
-        if token.polarity is not None:
-            polarity_scores.append(token.polarity)
+        if token.polarity_sentiws is not None:
+            polarity_scores.append(token.polarity_sentiws)
     if not polarity_scores:
         return [0.0]
     else:

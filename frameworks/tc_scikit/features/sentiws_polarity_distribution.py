@@ -15,7 +15,7 @@ def extract_polarity_tokens(document):
     polarity_tokens = []
     for token in document.tokens:
         if token.polarity is not None:
-            polarity_tokens.append(token.polarity)
+            polarity_tokens.append(token.polarity_sentiws)
     if not polarity_tokens:
         return [0]
     else:

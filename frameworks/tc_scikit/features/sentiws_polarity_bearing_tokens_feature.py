@@ -13,7 +13,7 @@ def build():
 def count_polarity_bearing_tokens(document):
     token_count = 0
     for token in document.tokens:
-        if token.polarity is not None:
+        if token.polarity_sentiws is not None:
             token_count += 1
     return [token_count]
 
