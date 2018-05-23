@@ -10,6 +10,7 @@ def build():
 
 
 class TextDepthFeature(BaseEstimator):
+    """A THF corpus specific feature that integrates the depth of text content in a tree hierarchy"""
     def __init__(self):
         self.logger = logging.getLogger()
 

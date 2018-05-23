@@ -47,14 +47,14 @@ class POSDistributionSpacy(BaseEstimator):
         return self
 
     def transform(self, X):
-        transformed = list(map(lambda x: self.transform_sentence(x), X))
+        transformed = list(map(lambda x: self.transform_document(x), X))
         return transformed
 
-    def transform_sentence(self, thf_sentence):
+    def transform_document(self, document):
         if self.coarse_grained:
-            pos_list = list(map(lambda x: x.spacy_pos_stts, thf_sentence.tokens))
+            pos_list = list(map(lambda x: x.spacy_pos_stts, document.tokens))
             distribution = get_pos_histogram(pos_list, STTS_TAGSET_SPACY)
         else:
-            pos_list = list(map(lambda x: x.spacy_pos_universal_google, thf_sentence.tokens))
+            pos_list = list(map(lambda x: x.spacy_pos_universal_google, document.tokens))
             distribution = get_pos_histogram(pos_list, POS_UNIVERSAL_GOOGLE)
         return distribution

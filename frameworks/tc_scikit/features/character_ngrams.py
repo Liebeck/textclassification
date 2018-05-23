@@ -19,12 +19,12 @@ def build(feature_name='character_ngram', ngram_range=(1, 1), normalize=False,
     return (feature_name, pipeline)
 
 
-def tokenizer_THF_words(thf_sentence):
+def tokenizer_words(thf_sentence):
     return list(map(lambda token: token.text, thf_sentence.tokens))
 
 
-def get_ngrams_sentence(thf_sentence, min_n, max_n):
-    tokens = tokenizer_THF_words(thf_sentence)
+def get_ngrams_document(thf_sentence, min_n, max_n):
+    tokens = tokenizer_words(thf_sentence)
     return get_ngrams(tokens, min_n, max_n)
 
 
@@ -55,7 +55,7 @@ class CharacterNGrams(BaseEstimator):
 
     def fit(self, X, y):
         self.vectorizer = CountVectorizer(
-            tokenizer=lambda text: get_ngrams_sentence(text, self.ngram_range[0], self.ngram_range[1]),
+            tokenizer=lambda text: get_ngrams_document(text, self.ngram_range[0], self.ngram_range[1]),
             ngram_range=(1, 1),  # the tokenizer creates a list of ngrams, so just (1, 1) here
             min_df=self.min_df,
             max_features=self.max_features,
@@ -66,11 +66,11 @@ class CharacterNGrams(BaseEstimator):
         return self
 
     def transform(self, X):
-        transformed = list(map(lambda x: self.transform_sentence(x), X))
+        transformed = list(map(lambda x: self.transform_document(x), X))
         transformed = np.concatenate(transformed, axis=0)
         return transformed
 
-    def transform_sentence(self, thf_sentence):
+    def transform_document(self, thf_sentence):
         vectorized = self.vectorizer.transform([thf_sentence]).toarray()
         vectorized = vectorized.astype(np.float64)
         return vectorized

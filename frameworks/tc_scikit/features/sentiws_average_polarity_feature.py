@@ -11,9 +11,9 @@ def build():
     return ('polarity_sentiws_average', pipeline)
 
 
-def extract_average_polarity(thf_sentence):
+def extract_average_polarity(document):
     polarity_scores = []
-    for token in thf_sentence.tokens:
+    for token in document.tokens:
         if token.polarity is not None:
             polarity_scores.append(token.polarity)
     if not polarity_scores:

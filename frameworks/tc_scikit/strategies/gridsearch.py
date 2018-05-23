@@ -1,6 +1,4 @@
 from frameworks import tc_scikit as bag_of_words
-# import tc_scikit.features.pos_distribution as pos_distribution
-import frameworks.tc_scikit.features.dependency_distribution as dependency_distribution
 import frameworks.tc_scikit.features.character_ngrams as character_ngrams
 import frameworks.tc_scikit.features.dependency_distribution_spacy as dependency_distribution_spacy
 import frameworks.tc_scikit.features.sentiws_polarity_distribution as sentiws_polarity_distribution
@@ -98,7 +96,7 @@ GRIDSEARCH_STRATEGIES = {
                 OrderedDict([
                     ('bag_of_words', bag_of_words.build),
                     ('pos_distribution_spacy', pos_distribution_spacy.build),
-                    ('dependency_distribution', dependency_distribution.build),
+                    ('dependency_distribution', dependency_distribution_spacy.build),
                 ]),
             'param_grid': {
                 'union__bag_of_words__transformer__ngram_range': [(1, 1)],

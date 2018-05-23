@@ -16,7 +16,7 @@ class THFSentenceFeaturesStructural(unittest.TestCase):
         text = 'Kiten Master: http://youtu.be/jVVD0OZk-6g'
         thf_sentence = THFSentenceExport(sentence_uniqueID, None, text, tokens, None, 1)
         use_sentence_length = True
-        feature_value = structural_features_spacy.transform_sentence(thf_sentence, use_sentence_length)
+        feature_value = structural_features_spacy.transform_document(thf_sentence, use_sentence_length)
         expected_value = [3,
                           0.0 / len(tokens),
                           0.0 / len(tokens),
@@ -53,7 +53,7 @@ class THFSentenceFeaturesStructural(unittest.TestCase):
         text = 'Diesen Vorschlag gibt es schon: S\u00fcdlicher Zugang zur Oberlandstra\u00dfe (Hatun-S\u00fcr\u00fcc\u00fc-Br\u00fccke) (https://tempelhofer-feld.berlin.de/i/tempelhofer-feld/proposal/104-S%C3%BCdlicher_Zugang_zur_Oberlandstra%C3%9Fe_Hatu)'
         thf_sentence = THFSentenceExport(sentence_uniqueID, None, text, tokens, None, 1)
         use_sentence_length = True
-        feature_value = structural_features_spacy.transform_sentence(thf_sentence, use_sentence_length)
+        feature_value = structural_features_spacy.transform_document(thf_sentence, use_sentence_length)
         expected_value = [3,
                           0.0 / len(tokens),
                           0.0 / len(tokens),
@@ -84,7 +84,7 @@ class THFSentenceFeaturesStructural(unittest.TestCase):
         text = 'BM Tester #1: Kite-Skaten auf dem Tempelhofer Feld: http://youtu.be/Jf68D61QN4A'
         thf_sentence = THFSentenceExport(sentence_uniqueID, None, text, tokens, None, 1)
         use_sentence_length = True
-        feature_value = structural_features_spacy.transform_sentence(thf_sentence, use_sentence_length)
+        feature_value = structural_features_spacy.transform_document(thf_sentence, use_sentence_length)
         expected_value = [3,
                           0.0 / len(tokens),
                           0.0 / len(tokens),
@@ -109,7 +109,7 @@ class THFSentenceFeaturesStructural(unittest.TestCase):
         text = 'Hier eine Konzept-Grafik:  http://i.imgur.com/JGlqExO.jpg'
         thf_sentence = THFSentenceExport(sentence_uniqueID, None, text, tokens, None, 1)
         use_sentence_length = True
-        feature_value = structural_features_spacy.transform_sentence(thf_sentence, use_sentence_length)
+        feature_value = structural_features_spacy.transform_document(thf_sentence, use_sentence_length)
         expected_value = [3,
                           0.0 / len(tokens),
                           0.0 / len(tokens),
@@ -136,7 +136,7 @@ class THFSentenceFeaturesStructural(unittest.TestCase):
         text = 'Tempelhofparikram - Interreligi\u00f6ser Pilgerpfad auf dem Tempelhofer Feld (http://lebensplan.com/Interreligioeser-Pilgerpfad.pdf)'
         thf_sentence = THFSentenceExport(sentence_uniqueID, None, text, tokens, None, 1)
         use_sentence_length = True
-        feature_value = structural_features_spacy.transform_sentence(thf_sentence, use_sentence_length)
+        feature_value = structural_features_spacy.transform_document(thf_sentence, use_sentence_length)
         expected_value = [3,
                           0.0 / len(tokens),
                           0.0 / len(tokens),
@@ -161,7 +161,7 @@ class THFSentenceFeaturesStructural(unittest.TestCase):
         text = 'kleine Elektrodrohnen just for fun, warum nicht.'
         thf_sentence = THFSentenceExport(sentence_uniqueID, None, text, tokens, None, 1)
         use_sentence_length = True
-        feature_value = structural_features_spacy.transform_sentence(thf_sentence, use_sentence_length)
+        feature_value = structural_features_spacy.transform_document(thf_sentence, use_sentence_length)
         expected_value = [3,
                           1.0 / len(tokens),
                           1.0 / len(tokens),

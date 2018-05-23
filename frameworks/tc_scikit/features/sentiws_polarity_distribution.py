@@ -11,9 +11,9 @@ def build(bins=10, density=None):
     return ('polarity_sentiws_distribution', pipeline)
 
 
-def extract_polarity_tokens(thf_sentence):
+def extract_polarity_tokens(document):
     polarity_tokens = []
-    for token in thf_sentence.tokens:
+    for token in document.tokens:
         if token.polarity is not None:
             polarity_tokens.append(token.polarity)
     if not polarity_tokens:
@@ -37,10 +37,10 @@ class SentiWSPolarityDistribution(BaseEstimator):
         return self
 
     def transform(self, X):
-        transformed = list(map(lambda x: self.transform_sentence(x), X))
+        transformed = list(map(lambda x: self.transform_document(x), X))
         return transformed
 
-    def transform_sentence(self, thf_sentence):
-        polarity_tokens = extract_polarity_tokens(thf_sentence)
+    def transform_document(self, document):
+        polarity_tokens = extract_polarity_tokens(document)
         histogram, edges = np.histogram(polarity_tokens, bins=self.edges, density=False)
         return histogram

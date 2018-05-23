@@ -10,9 +10,9 @@ def build():
     return ('polarity_sentiws_polarity_bearing_tokens', pipeline)
 
 
-def count_polarity_bearing_tokens(thf_sentence):
+def count_polarity_bearing_tokens(document):
     token_count = 0
-    for token in thf_sentence.tokens:
+    for token in document.tokens:
         if token.polarity is not None:
             token_count += 1
     return [token_count]

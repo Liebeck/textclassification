@@ -10,14 +10,14 @@ def build(use_sentence_length=True):
     return ('structural_features_spacy', pipeline)
 
 
-def transform_sentence(thf_sentence, use_sentence_length=True):
+def transform_document(document, use_sentence_length=True):
     values = []
-    sentence_number = int(thf_sentence.uniqueID[thf_sentence.uniqueID.index('s') + 1:])
+    sentence_number = int(document.uniqueID[document.uniqueID.index('s') + 1:])
     values.append(sentence_number)
-    words = list(map(lambda token: token.text, thf_sentence.tokens))
+    words = list(map(lambda token: token.text, document.tokens))
     comma_relative = 0
     dot_relative = 0
-    for token in thf_sentence.tokens:
+    for token in document.tokens:
         if token.text == ',' or token.text == b',':
             comma_relative += 1
         if token.text == '.' or token.text == b'.':
@@ -27,10 +27,10 @@ def transform_sentence(thf_sentence, use_sentence_length=True):
     values.append(comma_relative)
     values.append(dot_relative)
     if use_sentence_length:
-        values.append(len(thf_sentence.tokens))
+        values.append(len(document.tokens))
     link_count = 0
     punctuation_count = 0
-    for token in thf_sentence.tokens:
+    for token in document.tokens:
         if token.spacy_like_url:
             link_count += 1
         if token.spacy_is_punct:
@@ -58,5 +58,5 @@ class StructuralFeaturesSpacy(BaseEstimator):
         return self
 
     def transform(self, X):
-        transformed = list(map(lambda x: self.transform_sentence(x), X))
+        transformed = list(map(lambda x: self.transform_document(x), X))
         return transformed

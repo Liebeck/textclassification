@@ -1,16 +1,13 @@
 import frameworks.tc_scikit.features.bag_of_words as bag_of_words
 import frameworks.tc_scikit.features.character_embeddings as character_embeddings
 import frameworks.tc_scikit.features.character_ngrams as character_ngrams
-import frameworks.tc_scikit.features.dependency_distribution as dependency_distribution
 import frameworks.tc_scikit.features.dependency_distribution_spacy as dependency_distribution_spacy
 import frameworks.tc_scikit.features.embedding_centroid as embedding_centroid
 import frameworks.tc_scikit.features.long_word_count as long_word_count
-import frameworks.tc_scikit.features.pos_distribution as pos_distribution
 import frameworks.tc_scikit.features.pos_distribution_spacy as pos_distribution_spacy
 import frameworks.tc_scikit.features.sentiws_average_polarity_feature as sentiws_average_polarity_feature
 import frameworks.tc_scikit.features.sentiws_polarity_bearing_tokens_feature as sentiws_polarity_bearing_tokens_feature
 import frameworks.tc_scikit.features.sentiws_polarity_distribution as sentiws_polarity_distribution
-import frameworks.tc_scikit.features.structural_features as structural_features
 import frameworks.tc_scikit.features.structural_features_spacy as structural_features_spacy
 import frameworks.tc_scikit.features.textdepth_feature as textdepth_feature
 import frameworks.tc_scikit.representations.stopwords as stopwords
@@ -44,20 +41,7 @@ STRATEGIES = {'unigram': [bag_of_words.build(ngram_range=(1, 1))],
                   bag_of_words.build(ngram_range=(2, 2), token_form='IWNLP_lemma', lowercase=True, normalize=True)],
               'unigram_bigram': [bag_of_words.build(ngram_range=(1, 1), feature_name='unigram'),
                                  bag_of_words.build(ngram_range=(2, 2), feature_name='bigram')],
-              'pos_distribution': [pos_distribution.build()],
-              'pos_distribution_fs35': [pos_distribution.build_feature_selection(k=35)],
-              'pos_distribution_uts': [pos_distribution.build(use_STTS=False)],
-              'n_unigram+pos_distribution': [bag_of_words.build(ngram_range=(1, 1), normalize=True),
-                                             pos_distribution.build()],
-              'dependency_distribution': [dependency_distribution.build()],
-              'dependency_distribution_fs10': [dependency_distribution.build_feature_selection(k=10)],
               'dependency_distribution_spacy': [dependency_distribution_spacy.build()],
-              'pos+dep_distribution': [pos_distribution.build(),
-                                       structural_features.build()],
-              'pos+dep_distribution_fs': [pos_distribution.build_feature_selection(k=35),
-                                          dependency_distribution.build_feature_selection(k=10)],
-              'structural': [structural_features.build()],
-              'structural_without_token_length': [structural_features.build(use_sentence_length=False)],
               'structural_spacy': [structural_features_spacy.build()],
               'structural_spacy_without_token_length': [structural_features_spacy.build(use_sentence_length=False)],
               'sentiws_polarity': [sentiws_average_polarity_feature.build(),
@@ -69,7 +53,6 @@ STRATEGIES = {'unigram': [bag_of_words.build(ngram_range=(1, 1))],
                   embedding_centroid.build(embedding_length=100, stopwords=stopwords.german_stopwords_nltk())],
               'n_unigram+pos_distribution+embedding_centroid': [
                   bag_of_words.build(ngram_range=(1, 1), normalize=True, stopwords=stopwords.german_stopwords_nltk()),
-                  pos_distribution.build(),
                   embedding_centroid.build(embedding_length=100, stopwords=stopwords.german_stopwords_nltk())],
               'pos_distribution_spacy': [pos_distribution_spacy.build()],
               'pos_distribution_spacy_universal': [pos_distribution_spacy.build(coarse_grained=False)],

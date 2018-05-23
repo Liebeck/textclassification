@@ -51,11 +51,11 @@ class DependencyDistributionSpacy(BaseEstimator):
         return self
 
     def transform(self, X):
-        return list(map(lambda x: self.transform_sentence(x), X))
+        return list(map(lambda x: self.transform_document(x), X))
 
-    def transform_sentence(self, thf_sentence):
+    def transform_document(self, document):
         if self.use_TIGER:
-            dependency_list = list(map(lambda x: x.releation, thf_sentence.dependencies))
+            dependency_list = list(map(lambda x: x.releation, document.dependencies))
             distribution = get_dependency_histogram(dependency_list, TIGER_TAGSET_SPACY)
             return distribution
         else:
